@@ -4,7 +4,8 @@ import React from 'react'
 import styled from 'styled-components';
 const Container = styled.div`
 height: 70px;
-background-color: #A91079;
+
+
 `;
 const Wrapper = styled.div`
 padding: 5px 10px;
@@ -39,11 +40,11 @@ flex:1;
 const Right = styled.div`
 flex:1;
 display: flex;
-align-item: center;
+align-items: center;
 justify-content: flex-end;
 `;
 const MenuItem = styled.div`
-font-sze: 14px;
+font-size: 14px;
 cursor: pointer;
 margin-left: 25px;
 `;
