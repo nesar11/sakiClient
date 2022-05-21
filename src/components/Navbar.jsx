@@ -1,5 +1,5 @@
-import { Badge } from '@material-ui/core';
-import { Input, Search,  ShoppingCartOutlined } from '@material-ui/icons';
+import { Badge, Input } from '@material-ui/core';
+import { Search,  ShoppingCartOutlined } from '@material-ui/icons';
 import React from 'react'
 import styled from 'styled-components';
 const Container = styled.div`
@@ -8,7 +8,7 @@ height: 70px;
 
 `;
 const Wrapper = styled.div`
-padding: 5px 10px;
+padding: 5px 5px;
 display: flex;
 justify-content: space-between;
 `;
@@ -17,22 +17,25 @@ flex:1
 `;
 const Language = styled.div`
 
-
-
 `;
+
 const SearchContainer = styled.div`
-border: 2px solid lightgray;
-font-size:14px;
-display: flex;
-align-items: center;
-margin-left: 25px;
-padding: 5px;
+  border: 0.5px solid lightgray;
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  margin-top:10px;;
+  margin-left: 0px;
+  padding: 7px;
 `;
-
-
 
 const Logo = styled.h1`
 font-weight: bold;
+width: 230px;
+height: 55px;
+margin-top:00px;
+margin-right: 5px;
+
 `;
 const Center = styled.div`
 flex:1;
@@ -42,12 +45,16 @@ flex:1;
 display: flex;
 align-items: center;
 justify-content: flex-end;
+margin-top:-30px;
 `;
 const MenuItem = styled.div`
-font-size: 14px;
+font-size: 20px;
 cursor: pointer;
-margin-left: 25px;
+margin-left: 10px;
+margin-right: 20px;;
+
 `;
+
 //21.11 minutes youtube
 
 function Navbar() {
@@ -55,15 +62,16 @@ function Navbar() {
     <Container>
       <Wrapper>
           <Left> 
-              <Logo>Saki</Logo>
+              <Logo><img src='logo512.png' width="170" height="55"></img></Logo>
           <Language> EN</Language>   
            
           </Left> 
           <Center> 
         <SearchContainer>
-           <Search style={{color: "gray", fontSize:20}}/>
+       
+            <Search  style={{ color: "gray", fontSize: 30}}/>
 
-        <Input />
+        <Input style={{ color: "gray", fontSize: 18, width: 650 }} />
         </SearchContainer>      
         </Center> 
           <Right> 

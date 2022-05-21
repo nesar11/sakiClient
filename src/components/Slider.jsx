@@ -53,6 +53,10 @@ const ImgContainer = styled.div`
 const Image = styled.img`
   height: 80%;
   margin-left: 150px;
+  transition: all 0.5s ease;
+  &:hover {
+      transform: scale(0.9);
+  }
 `;
 
 const InfoContainer = styled.div`
@@ -76,8 +80,15 @@ const Desc = styled.p`
 const Button = styled.button`
   padding: 10px;
   font-size: 20px;
-  background-color: transparent;
+  border: none;
+  background-color:#781C68 ;
+  color:white;
   cursor: pointer;
+  transition: all 0.5s ease;
+  &:hover {
+    background-color: #f008c9;
+    transform: scale(1.09);
+  }
 `;
 
 

@@ -35,7 +35,12 @@ font-size: 17px;
     color:white;
     cursor: pointer;
     font-weight: 600;
-    background-color:#DF0101 ;
+    background-color:#781C68 ;
+    transition: all 0.5s ease;
+  &:hover {
+    background-color: #f008c9;
+    transform: scale(1.1);
+  }
 `;
 
 const CategoryItem = ({item}) => {
