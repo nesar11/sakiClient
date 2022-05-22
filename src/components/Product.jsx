@@ -8,7 +8,7 @@ height: 100px;
 position: absolute;
 top: 0;
 left: 0;
-background-color: #0000006c;
+background-color: rgba(0,0,0,0.2);
 z-index: 3;
 display: flex;
 align-content: center;
@@ -20,7 +20,7 @@ const Container = styled.div`
   flex: 1;
   margin: 20px;
   min-width: 280px;
-  height: 350px;
+  height: 450px;
   display: flex;
   align-items: center;
   justify-content: center;

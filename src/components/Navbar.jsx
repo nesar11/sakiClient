@@ -4,7 +4,9 @@ import React from 'react'
 import styled from 'styled-components';
 const Container = styled.div`
 height: 70px;
-
+position: -webkit-sticky; /* Safari */
+	position: sticky;
+	top: 0;
 
 `;
 const Wrapper = styled.div`
