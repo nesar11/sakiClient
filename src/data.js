@@ -91,8 +91,5 @@ export const sliderItems = [
       id:12,
       img:"https://d3o2e4jr3mxnm3.cloudfront.net/Rocket-Vintage-Chill-Cap_66374_1_lg.png",
     },
-    {
-      id:8,
-      img:"https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
-    },
+
   ]
