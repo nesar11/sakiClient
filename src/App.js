@@ -1,9 +1,11 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Home from './pages/Home';
+import Product from './pages/Product';
+// import Home from './pages/Home';
+
 
 function App() {
-  return <Home ></Home>;
+  return <Product />
 }
 
 export default App;

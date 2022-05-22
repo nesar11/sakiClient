@@ -20,7 +20,7 @@ margin-bottom: 20px;
 
 `;
 const InputContainer = styled.div`
-  width: 50%;
+  width: 35%;
   height: 40px;
   background-color: white;
   display: flex;
@@ -35,7 +35,7 @@ flex: 8;
 
 `;
 const Button = styled.div`
-flex: 1;
+flex: 2;
   border: none;
   background-color: teal;
   color: white;
