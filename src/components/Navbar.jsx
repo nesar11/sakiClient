@@ -4,9 +4,8 @@ import React from 'react'
 import styled from 'styled-components';
 const Container = styled.div`
 height: 70px;
-position: -webkit-sticky; /* Safari */
-	position: sticky;
-	top: 0;
+position: "fixed";
+z-index: "9999";
 
 `;
 const Wrapper = styled.div`
@@ -73,7 +72,7 @@ function Navbar() {
        
             <Search  style={{ color: "gray", fontSize: 30}}/>
 
-        <Input style={{ color: "gray", fontSize: 18, width: 650 }} />
+        <Input style={{ color: "gray", fontSize: 18, width: 650, border:"none" }} />
         </SearchContainer>      
         </Center> 
           <Right> 
