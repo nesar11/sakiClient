@@ -9,7 +9,7 @@ import Newsletter from '../components/Newsletter'
 import Products from '../components/Products'
 import Slider from '../components/Slider'
 
-function Home() {
+const Home = () => {
   return (
     <div className='container'>
       <Announcement />
@@ -23,4 +23,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Home;
