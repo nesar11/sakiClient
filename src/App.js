@@ -31,10 +31,11 @@ function App() {
         <Route path="/products/:category">
           <ProductList />
         </Route>
-           <Route path="/product/:id">
+           <Route path="/product/:_id">
           <Product />
         </Route >
-        <Route   path="/cart"  element={<Cart />}>
+        <Route   path="/cart" >
+          <Cart />
         </Route>
         <Route path="/login">{user ? <Redirect to="/" /> : <Login />}
    
