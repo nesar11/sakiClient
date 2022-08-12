@@ -125,19 +125,28 @@ export const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  
 
   useEffect(()=>{
     const getProduct = async ()=>{
       try{
         const res = await publicRequest.get("/products/find/" + id);
-        setProduct(res.data);
-        console.log(res.data)
+        setProduct(res.data);     
       } catch{}
     };
 getProduct()
 console.log(getProduct)
 
   },[id]);
+  const handleQuantity = (type) =>{
+    if(type ==="dec"){
+      quantity> 1 && setQuantity(quantity - 1)
+    }else{
+     setQuantity(quantity + 1)
+    }
+    console.log(type)
+  }
   return (
     <Container>
       <Navbar />
@@ -147,40 +156,34 @@ console.log(getProduct)
           <Image src={product.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>Baby Blue | Black wedding dress </Title>
-          <Desc>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
-            iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
-            tristique tortor pretium ut. Curabitur elit justo, consequat id
-            condimentum ac, volutpat ornare.
+          <Title> {product.title} </Title>
+          <Desc>{product.desc}
           </Desc>
           <Price> RM{product.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
+              {product.color?.map((c)=>(
+                  <FilterColor color={c} key={c}/>
+
+              ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
-              </FilterSize>
+              {product.size?.map((s)=>(
+                <FilterSizeOption key={s}>{s}</FilterSizeOption>
+              ))}
+                </FilterSize>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
+              <Remove onClick={()=> handleQuantity('dec')}/>
+              <Amount>{quantity}</Amount>
+              <Add onClick={()=> handleQuantity('inc')}/>
             </AmountContainer>
-          <Link> <Button>ADD TO CART</Button></Link>  
+          <Link to={`/cart`} > <Button>ADD TO CART</Button></Link>  
           </AddContainer>
         </InfoContainer>
       </Wrapper>

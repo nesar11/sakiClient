@@ -63,7 +63,7 @@ function Navbar() {
     <Container>
       <Wrapper>
           <Left> 
-              <Logo><img src='../logo512.png' width="170" height="55" alt='some value'></img></Logo>
+              <Link to={`/`} ><Logo><img src='../logo512.png' width="170" height="55" alt='some value'></img></Logo></Link>
           {/* <Language> EN</Language>    */}
            
           </Left> 
