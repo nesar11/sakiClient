@@ -4,6 +4,10 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import styled from "styled-components";
+import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
+import { publicRequest } from "../requestMethods";
 
 const Container = styled.div``;
 
@@ -118,13 +122,29 @@ const Button = styled.button`
 `;
 
 export const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState({});
+
+  useEffect(()=>{
+    const getProduct = async ()=>{
+      try{
+        const res = await publicRequest.get("/products/find/" + id);
+        setProduct(res.data);
+        console.log(res.data)
+      } catch{}
+    };
+getProduct()
+console.log(getProduct)
+
+  },[id]);
   return (
     <Container>
       <Navbar />
       <Announcement />
       <Wrapper>
         <ImgContainer>
-          <Image src="https://www.pinclipart.com/picdir/big/531-5317473_pin-by-dolores-daniel-on-quinceanera-in-2019.png" />
+          <Image src={product.img} />
         </ImgContainer>
         <InfoContainer>
           <Title>Baby Blue | Black wedding dress </Title>
@@ -135,7 +155,7 @@ export const Product = () => {
             tristique tortor pretium ut. Curabitur elit justo, consequat id
             condimentum ac, volutpat ornare.
           </Desc>
-          <Price>RM 1100</Price>
+          <Price> RM{product.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
@@ -160,7 +180,7 @@ export const Product = () => {
               <Amount>1</Amount>
               <Add />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+          <Link> <Button>ADD TO CART</Button></Link>  
           </AddContainer>
         </InfoContainer>
       </Wrapper>

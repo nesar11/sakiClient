@@ -17,9 +17,9 @@ justify-content: space-between;
 const Left = styled.div`
 flex:1;
 `;
-const Language = styled.div`
+// const Language = styled.div`
 
-`;
+// `;
 
 const SearchContainer = styled.div`
   border: 0.5px solid lightgray;
@@ -63,8 +63,8 @@ function Navbar() {
     <Container>
       <Wrapper>
           <Left> 
-              <Logo><img src='logo512.png' width="170" height="55" alt='some value'></img></Logo>
-          <Language> EN</Language>   
+              <Logo><img src='../logo512.png' width="170" height="55" alt='some value'></img></Logo>
+          {/* <Language> EN</Language>    */}
            
           </Left> 
           <Center> 
