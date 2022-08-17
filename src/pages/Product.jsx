@@ -4,10 +4,12 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import styled from "styled-components";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { publicRequest } from "../requestMethods";
+import { addProduct } from "../redux/cartRedux";
+import {useDispatch} from "react-redux";
 
 const Container = styled.div``;
 
@@ -126,6 +128,7 @@ export const Product = () => {
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
   
 
   useEffect(()=>{
@@ -147,6 +150,11 @@ console.log(getProduct)
     }
     console.log(type)
   }
+  const handleClick =()=>{
+    dispatch(
+    addProduct({product,quantity, price: product.price *quantity}));
+    console.log(addProduct);
+  };
   return (
     <Container>
       <Navbar />
@@ -183,7 +191,7 @@ console.log(getProduct)
               <Amount>{quantity}</Amount>
               <Add onClick={()=> handleQuantity('inc')}/>
             </AmountContainer>
-          <Link to={`/cart`} > <Button>ADD TO CART</Button></Link>  
+          <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
