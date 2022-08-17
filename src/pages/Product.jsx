@@ -139,7 +139,7 @@ export const Product = () => {
       } catch{}
     };
 getProduct()
-console.log(getProduct)
+
 
   },[id]);
   const handleQuantity = (type) =>{
@@ -148,12 +148,11 @@ console.log(getProduct)
     }else{
      setQuantity(quantity + 1)
     }
-    console.log(type)
-  }
+   }
   const handleClick =()=>{
     dispatch(
-    addProduct({product,quantity, price: product.price *quantity}));
-    console.log(addProduct);
+    addProduct({...product, quantity}));
+   
   };
   return (
     <Container>
