@@ -5,6 +5,9 @@ import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { useSelector } from "react-redux";
+import StripeCheckout from "react-stripe-checkout";
+import { useState } from "react";
+const KEY = process.env.REACT_APP_STRIPE;
 
 
 const Container = styled.div``;
@@ -161,6 +164,12 @@ const Button = styled.button`
 
 const Cart = () => {
   const cart = useSelector(state => state.cart);
+  const [stripeToken, setStripeToken] = useState(null)
+  const onToken = (token)=>{
+    setStripeToken(token)
+
+  }
+  console.log(stripeToken);
  
   return (
     <Container>
@@ -189,7 +198,7 @@ const Cart = () => {
                  <ProductId>
                  <p>ID: {product._id}</p>
                  </ProductId>
-                 <ProductColor>Color: {product.color} </ProductColor>
+                 <ProductColor color={product.color} />
                  <ProductSize>
                    <b>Size:</b> {product.size}
                  </ProductSize>
@@ -227,7 +236,19 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>$  {cart.total}</SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
+           
+            <StripeCheckout
+              name="Saki Shop"
+              image="https://avatars.githubusercontent.com/u/1486366?v=4"
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total}`}
+              amount={cart.total * 100}
+              token={onToken}
+              stripeKey={KEY}
+            >
+              <Button>CHECKOUT NOW</Button>
+            </StripeCheckout>
           </Summary>
         </Bottom>
       </Wrapper>
