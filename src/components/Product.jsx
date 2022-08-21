@@ -89,6 +89,7 @@ const Product = ({item}) => {
       </Info>
       
     </Container>
+      <div > RM {item.price}</div>
     </Link> 
   )
 }

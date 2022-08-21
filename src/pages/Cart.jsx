@@ -68,7 +68,7 @@ const ProductDetail = styled.div`
 `;
 
 const Image = styled.img`
-  width: 200px;
+  width: 100px;
 `;
 
 const Details = styled.div`
@@ -187,11 +187,11 @@ const Cart = () => {
                    <b>Product:</b> {product.title}
                  </ProductName>
                  <ProductId>
-                   <b>ID:</b> {product._id}
+                 <p>ID: {product._id}</p>
                  </ProductId>
-                 <ProductColor color={product.color} />
+                 <ProductColor>Color: {product.color} </ProductColor>
                  <ProductSize>
-                   <b>Size:</b>{product.size}
+                   <b>Size:</b> {product.size}
                  </ProductSize>
                </Details>
              </ProductDetail>
@@ -206,6 +206,7 @@ const Cart = () => {
            </Product>
 
            )) }
+           <Hr />
             
           </Info>
           <Summary>
