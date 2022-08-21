@@ -4,10 +4,12 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import styled from "styled-components";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { publicRequest } from "../requestMethods";
+import { addProduct } from "../redux/cartRedux";
+import {useDispatch} from "react-redux";
 
 const Container = styled.div``;
 
@@ -126,6 +128,9 @@ export const Product = () => {
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
+  const dispatch = useDispatch();
   
 
   useEffect(()=>{
@@ -136,7 +141,7 @@ export const Product = () => {
       } catch{}
     };
 getProduct()
-console.log(getProduct)
+
 
   },[id]);
   const handleQuantity = (type) =>{
@@ -145,8 +150,12 @@ console.log(getProduct)
     }else{
      setQuantity(quantity + 1)
     }
-    console.log(type)
-  }
+   }
+  const handleClick =()=>{
+    dispatch(
+    addProduct({...product, quantity, color, size}));
+   
+  };
   return (
     <Container>
       <Navbar />
@@ -164,13 +173,13 @@ console.log(getProduct)
             <Filter>
               <FilterTitle>Color</FilterTitle>
               {product.color?.map((c)=>(
-                  <FilterColor color={c} key={c}/>
+                  <FilterColor color={c} key={c} onClick ={()=> setColor(c)}/>
 
               ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize>
+              <FilterSize onChange={(e)=>setSize(e.target.value)}>
               {product.size?.map((s)=>(
                 <FilterSizeOption key={s}>{s}</FilterSizeOption>
               ))}
@@ -183,7 +192,7 @@ console.log(getProduct)
               <Amount>{quantity}</Amount>
               <Add onClick={()=> handleQuantity('inc')}/>
             </AmountContainer>
-          <Link to={`/cart`} > <Button>ADD TO CART</Button></Link>  
+          <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
