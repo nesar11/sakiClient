@@ -168,7 +168,7 @@ getProduct()
           <Title> {product.title} </Title>
           <Desc>{product.desc}
           </Desc>
-          <Price> RM{product.price}</Price>
+          <Price> RM {product.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
